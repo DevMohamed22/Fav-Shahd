@@ -22,6 +22,7 @@
             color: #fff; 
             font-family: 'Cairo', sans-serif; 
             overflow-x: hidden; 
+            overflow-y: auto; /* تأكد من عدم حدوث تمرير غير مرغوب فيه */
         }
 
         /* تأثير أوراق الشجر المتساقطة في الخلفية */
@@ -184,21 +185,6 @@
             font-style: italic;
         }
 
-        /* زر الإغلاق */
-        #close-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--primary);
-            color: #000;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-        }
-
         #close-btn:hover {
             background: var(--accent);
             box-shadow: 0 0 30px rgba(230, 126, 34, 0.3);
@@ -210,16 +196,16 @@
 <body>
 
     <audio id="bgMusic" loop preload="auto">
-        <source src="your_song.mp3" type="audio/mpeg">
+        <source src="song.mp3" type="audio/mpeg">
     </audio>
 
     <div id="leaf-container"></div>
 
     <div id="intro-overlay">
         <div class="intro-box">
-            <h2>كانت هنا في يوم.. أجمل حكاية</h2>
-            <button class="play-music-btn" onclick="playMusic()">شغّل الموسيقى</button>
-            <button class="enter-btn" onclick="initExperience()">دخول المتحف</button>
+            <h2>لو وحشتك فيوم هتلاقيني مستنيكي هنا..فبيت ذكرياتنا</h2>
+            <button class="play-music-btn" onclick="playMusic()">Music For you♡</button>
+            <button class="enter-btn" onclick="initExperience()">Our Home</button>
         </div>
     </div>
 
@@ -227,7 +213,7 @@
         <section>
             <div class="glass-card">
                 <h1>المحطة الأخيرة</h1>
-                <p>أهلاً بكِ في مكاني الهادي.. ده صندوق ذكرياتنا الأخير اللي هيتقفل بسلام.</p>
+                <p>أهلاً بكِ في مكاني الهادي.. ده صندوق ذكرياتنا الأخير اللي هيتقفل بسلام واللي عملته بكل حب.</p>
                 <div class="timer-text" id="final-timer"></div>
                 <p style="opacity: 0.5;">(انزلي لتحت بهدوء..)</p>
             </div>
@@ -235,28 +221,27 @@
 
         <section>
             <div class="glass-card">
-                <h1>معرض الحنين</h1>
+                <h1>احلي اوقات حياتي</h1>
                 <div class="gallery">
                     <div class="img-item"><img src="img1.jpg"></div>
                     <div class="img-item"><img src="img2.jpg"></div>
                     <div class="img-item"><img src="img3.jpg"></div>
                     <div class="img-item"><img src="img4.jpg"></div>
                     <div class="img-item"><img src="img5.jpg"></div>
+                    <div class="img-item"><img src="img6.jpg"></div>
                 </div>
-                <p>"بالمصري كدة.. كنا حلوين أوي مع بعض، ودي النسخة اللي هفضل فاكرك بيها."</p>
+                <p>"كنا حلوين اوي سوا يروحي كل مبص فعينك وامسك ايدك بحس بحنان الدنيا كله"</p>
             </div>
         </section>
 
         <section>
             <div class="glass-card">
                 <h1>كلمة للزمن</h1>
-                <div class="msg">"مش زعلان منك، ممتن لكل خناقة وكل ضحكة خلتني أنضج وأبقى الشخص اللي أنا عليه دلوقتي."</div>
-                <p style="margin-top: 50px; font-family: 'Amiri'; font-size: 2rem; color: var(--primary);">وداعًا يا أغلى ذكرى.</p>
+                <div class="msg">​"لفينا وروحنا وجينا، وأدينا وصلنا للمحطة الأخيرة. شكراً إنك كنتِ في يوم "بيتي" وأماني.. ربنا يريح قلبك ويوفقك في اللي جاي يحبيبة قلبي."</div>
+                <p style="margin-top: 50px; font-family: 'Amiri'; font-size: 2rem; color: var(--primary);">سلام يا احلي شهد فحياتي.</p>
             </div>
         </section>
     </div>
-
-    <button id="close-btn" onclick="window.close()">إغلاق</button>
 
     <script>
         // إنشاء أوراق الشجر
@@ -288,6 +273,10 @@
                 document.getElementById('intro-overlay').style.display = 'none';
                 document.getElementById('main-content').style.opacity = '1';
             }, 2000);
+        }
+
+        function closePage() {
+            window.location.href = "about:blank";  // طريقة أخرى لإغلاق الصفحة
         }
 
         const start = new Date('2021-04-15'); // التاريخ المصري بتاعنا
